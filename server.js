@@ -18,4 +18,10 @@ io.on("connection", newConnection);
 
 function newConnection(socket) {
   console.log("new connection: " + socket.client.id);
+
+  socket.on("mouse", mouseMessage);
+
+  function mouseMessage(dataReceived){
+    console.log(dataReceived);
+  }
 }
