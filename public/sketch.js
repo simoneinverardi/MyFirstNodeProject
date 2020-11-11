@@ -1,7 +1,7 @@
 let socket = io();
 let myColor = "white";
 
-socket .on("connect", newConnection);
+socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse);
 socket.on("color", setColor);
 
@@ -17,7 +17,7 @@ function newConnection(){
 function drawOtherMouse(data) {
   push();
   fill(data.color);
-  ellipse(data.x,data.y,10);
+  ellipse(data.x, data.y, 10);
   pop();
 }
 
