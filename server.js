@@ -18,6 +18,10 @@ function newConnection(socket) {
   console.log("new connection: " + socket.client.id);
 
   let clientColor = getRandomColor();
+
+  //send the color to all the other clients
+  socket.broadcast.emit("newPlayer", clientColor);
+
   socket.emit("color", clientColor);
 
   socket.on("mouse", mouseMessage);

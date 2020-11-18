@@ -3,6 +3,21 @@ let myColor = "white";
 socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse);
 socket.on("color", setColor);
+socket.on("newPlayer", newPlayer);
+
+function newPlayer(newPlayerColor) {
+  console.log(newPlayerColor);
+  push();
+  fill("purple");
+  rectMode(CENTER);
+  noStroke();
+  rect(width/2, height/2, 600, 50);
+  textSize(30);
+  textAlign(CENTER, CENTER);
+  fill(newPlayerColor);
+  text("New player joined: " + newPlayerColor, width/2, height/2);
+  pop();
+}
 
 function setColor(assignedColor){
   myColor = assignedColor;
@@ -28,7 +43,13 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
+  push();
   background("purple");
+  textAlign(CENTER, CENTER);
+  textSize(30);
+  fill(myColor);
+  text( "Welcome: " + myColor, width/2, height/2);
+  pop();
 }
 
 function draw() {
